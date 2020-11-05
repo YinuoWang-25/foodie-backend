@@ -1,0 +1,6 @@
+{
+  "registry.terraform.io/terraform-providers/mysql": {
+    "hash": "h1:xCQLVKy18oE/Wo3IkK82GzRX+sEioMyPFUlRt28USiA=",
+    "version": "1.9.0"
+  }
+}

@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `foodie`.`supplier`;
+CREATE TABLE `foodie`.`supplier` (
+  `uuid` BINARY(16) NOT NULL,
+  `display_name` VARCHAR(45) NULL,
+  `avadar` VARCHAR(255) NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`uuid`));
