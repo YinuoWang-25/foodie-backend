@@ -9,3 +9,19 @@ CREATE TABLE `foodie`.`offer_feedback` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`uuid`));
+
+ALTER TABLE `foodie`.`offer_feedback`
+ADD INDEX `offer_feedback_idx` (`offer_uuid` ASC) VISIBLE,
+ADD INDEX `offer_feedback_customer_idx` (`customer_uuid` ASC) VISIBLE;
+;
+ALTER TABLE `foodie`.`offer_feedback`
+ADD CONSTRAINT `offer_feedback`
+  FOREIGN KEY (`offer_uuid`)
+  REFERENCES `foodie`.`offer_metadata` (`uuid`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `offer_feedback_customer`
+  FOREIGN KEY (`customer_uuid`)
+  REFERENCES `foodie`.`customer` (`uuid`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;

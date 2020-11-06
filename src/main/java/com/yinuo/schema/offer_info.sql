@@ -8,9 +8,18 @@ CREATE TABLE `foodie`.`offer_info` (
   `factory_name` VARCHAR(45) NOT NULL,
   `factory_address` VARCHAR(255) NOT NULL,
   `packaging_method` VARCHAR(32) NOT NULL,
-  `packaging_method` VARCHAR(32) NOT NULL,
   `storage_method` VARCHAR(32) NOT NULL,
   `use_instruction` VARCHAR(255) NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`uuid`));
+
+ALTER TABLE `foodie`.`offer_info`
+ADD INDEX `offer_info_idx` (`offer_uuid` ASC) VISIBLE;
+;
+ALTER TABLE `foodie`.`offer_info`
+ADD CONSTRAINT `offer_info`
+  FOREIGN KEY (`offer_uuid`)
+  REFERENCES `foodie`.`offer_metadata` (`uuid`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;

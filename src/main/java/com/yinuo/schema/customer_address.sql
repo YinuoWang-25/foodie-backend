@@ -10,3 +10,13 @@ CREATE TABLE `foodie`.`customer_address` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`uuid`));
+
+ALTER TABLE `foodie`.`customer_address`
+ADD INDEX `customer_address_idx` (`customer_uuid` ASC) VISIBLE;
+;
+ALTER TABLE `foodie`.`customer_address`
+ADD CONSTRAINT `customer_address`
+  FOREIGN KEY (`customer_uuid`)
+  REFERENCES `foodie`.`customer` (`uuid`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;

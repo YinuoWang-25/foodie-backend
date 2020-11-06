@@ -12,3 +12,13 @@ CREATE TABLE `foodie`.`order_status` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`uuid`));
+
+ALTER TABLE `foodie`.`order_status`
+ADD INDEX `order_status_idx` (`order_uuid` ASC) VISIBLE;
+;
+ALTER TABLE `foodie`.`order_status`
+ADD CONSTRAINT `order_status`
+  FOREIGN KEY (`order_uuid`)
+  REFERENCES `foodie`.`order` (`uuid`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
